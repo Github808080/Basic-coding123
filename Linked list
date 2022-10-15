@@ -1,45 +1,28 @@
-// Linked list implementation in C
+// Linked list implementation in python
+class Node:
+   def __init__(self, dataval=None):
+      self.dataval = dataval
+      self.nextval = None
 
-#include <stdio.h>
-#include <stdlib.h>
+class SLinkedList:
+   def __init__(self):
+      self.headval = None
 
-// Creating a node
-struct node {
-  int value;
-  struct node *next;
-};
+   def listprint(self):
+      printval = self.headval
+      while printval is not None:
+         print (printval.dataval)
+         printval = printval.nextval
 
-// print the linked list value
-void printLinkedlist(struct node *p) {
-  while (p != NULL) {
-    printf("%d ", p->value);
-    p = p->next;
-  }
-}
+list = SLinkedList()
+list.headval = Node("Mon")
+e2 = Node("Tue")
+e3 = Node("Wed")
 
-int main() {
-  // Initialize nodes
-  struct node *head;
-  struct node *one = NULL;
-  struct node *two = NULL;
-  struct node *three = NULL;
+# Link first Node to second node
+list.headval.nextval = e2
 
-  // Allocate memory
-  one = malloc(sizeof(struct node));
-  two = malloc(sizeof(struct node));
-  three = malloc(sizeof(struct node));
+# Link second Node to third node
+e2.nextval = e3
 
-  // Assign value values
-  one->value = 1;
-  two->value = 2;
-  three->value = 3;
-
-  // Connect nodes
-  one->next = two;
-  two->next = three;
-  three->next = NULL;
-
-  // printing node-value
-  head = one;
-  printLinkedlist(head);
-}
+list.listprint()
